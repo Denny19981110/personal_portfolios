@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: url(./pic/wall.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .time-bar {
+        width: 1200px;
+        height: 20px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #bar {
+        width: 0%;
+        height: 100%;
+        background-color: aquamarine;
+    }
+
+    .box {
+        height: 600px;
+    }
+
+    .row div:nth-last-of-type(2n+1) {
+        width: 200px;
+        background-color: rgba(0, 0, 0, .8);
+
+    }
+
+    h2,
+    p {
+        color: white;
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    h2 {
+        text-align: center;
+        margin: 50px 0;
+        font-family: 'Bangers','Noto Sans TC';
+    }
+
+    .row {
+        width: 1300px;
+    }
+
+    .intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .game-box {
+        background-image: url(./pic/dead-walking.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 900px;
+        position: relative;
+        cursor: none;
+    }
+
+    .bloodSpot {
+        width: 50px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+
+    .cursor {
+        width: 100px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .zombine {
+        height: 100px;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        margin: 20px 0;
+        background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/323909/yellow-top.png);
+        border-radius: 0;
+        font-weight: 600;
+        font-size: 20px;
+        filter: drop-shadow(0 0 10px #ff0);
+        font-family: 'Bangers', cursive;
+    }
+</style>
+
+<body>
+    <div class="time-bar">
+        <div class="bar" id="bar"></div>
+    </div>
+    <div class="container p-0 m-0">
+        <div class="row p-0 m-0 ">
+            <div class="box intro">
+                <p>在時間內盡可能的擊殺殭屍，殺得越多分數越多!</p>
+                <br>
+                <br>
+                <p>分數參考:<br>
+                    30分:二等兵<br>
+                    45分:陸軍水平<br>
+                    56分以上:特等射手
+                </p>
+            </div>
+            <div class="box game-box">
+                <img src="./pic/blood-spot.png" class="bloodSpot">
+                <img src="./pic/crosshair.png" class="cursor">
+            </div>
+            <div class="box userUI">
+                <button class="btn start-Btn">start</button>
+                <button class="btn restar-Btn" disabled>restart</button>
+                <h2>0分</h2>
+                <h2 class="Highest"></h2>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let gameBox = document.querySelector('.game-box')
+        let cursor = document.querySelector('.cursor')
+        let bloodSpot = document.querySelector('.bloodSpot')
+        let startBtn = document.querySelector('.start-Btn')
+        let restartBtn = document.querySelector('.restar-Btn')
+        let bar = document.querySelector('#bar')
+        let barWith = 1
+        let h2 = document.querySelector('h2')
+        let highest = document.querySelector('.Highest')
+        let score = 0
+
+        const zombine = document.createElement('img')
+        zombine.setAttribute('src', './pic/zombine.png')
+        zombine.classList.add('zombine')
+
+        // X、Y軸位置
+        let targetX
+        let targetY
+
+        window.onload = function () {
+            layoutPoint()
+            startBtn.addEventListener('click', function () {
+                addToStorage()
+                startGame()
+                setZombine()
+                console.log(gameBox.offsetWidth)
+                gameBox.appendChild(zombine)
+                startBtn.setAttribute('disabled', 'disabled')
+                restartBtn.removeAttribute('disabled')
+            })
+
+            gameBox.addEventListener('mousemove', cursorPosition)
+
+            gameBox.addEventListener("click", GameClick)
+
+            restartBtn.addEventListener('click', function () {
+                reStart()
+                addToStorage()
+            })
+        }
+
+
+
+        //準心位置
+        function cursorPosition(event) {
+            let pageX = event.pageX;
+            let pageY = event.pageY;
+
+            let gameBoxX = gameBox.offsetLeft;
+            let gameBoxY = gameBox.offsetTop;
+
+            targetX = pageX - gameBoxX;
+            targetY = pageY - gameBoxY;
+
+            cursor.style.top = (targetY) + "px"
+            cursor.style.left = (targetX) + "px"
+        }
+
+        // 點擊計分
+        function GameClick(event) {
+            let pageX = event.pageX;
+            let pageY = event.pageY;
+
+            let gameBoxX = gameBox.offsetLeft;
+            let gameBoxY = gameBox.offsetTop;
+
+            targetX = pageX - gameBoxX;
+            targetY = pageY - gameBoxY;
+
+            bloodSpot.style.top = (targetY) + "px"
+            bloodSpot.style.left = (targetX) + "px"
+
+            if (event.target === zombine) score++
+            h2.innerText = score + "分"
+
+            removeClick()
+
+        }
+
+        function removeClick() {
+            if (barWith == 1200) {
+                gameBox.removeEventListener('click', GameClick)
+
+            }
+        }
+
+        function reStart() {
+            location.reload()
+        }
+        // 殭屍生成
+        function setZombine() {
+            let randomZom = setInterval(randZom, 850)
+            function randZom() {
+                if (barWith >= 1200) {
+                    clearInterval(randomZom)
+
+                }
+                let randTop = Math.random() * (gameBox.offsetHeight - 100)
+                let randLeft = Math.random() * (gameBox.offsetWidth - 100)
+
+                zombine.style.position = 'absolute'
+                zombine.style.top = randTop + 'px'
+                zombine.style.left = randLeft + 'px'
+            }
+        }
+
+        function startGame() {
+            let timeCount = setInterval(countTime, 50)
+
+            function countTime() {
+                if (barWith >= 1200) {
+                    clearInterval(timeCount)
+                } else {
+                    barWith++
+
+                    if (barWith >= 1000) {
+                        bar.style.backgroundColor = 'red'
+                    }
+                    bar.style.width = barWith + 'px'
+                }
+            }
+        }
+
+        //紀錄最高分
+        let key = 'key'
+        function addToStorage() {
+            let storageScore = score
+            let List = []
+
+            let scoreObj = {
+                Highest: 0
+            }
+            if (localStorage.getItem(key) == null) {
+                List.push(scoreObj)
+            } else {
+                List = JSON.parse(localStorage.getItem(key))
+                if (storageScore > List[0].Highest) {
+                    List[0] = {
+                        Highest: storageScore
+                    }
+
+                }
+            }
+            localStorage.setItem(key, JSON.stringify(List))
+        }
+        // 列印歷史紀錄
+        function layoutPoint() {
+            let List = JSON.parse(localStorage.getItem(key))
+            if (localStorage.getItem(key) == null) {
+                highest.innerText = "最高分: " + + 0 + "分"
+            } else {
+                highest.innerText = "最高分: " + List[0].Highest + "分"
+                console.log(List[0].Highest)
+            }
+        }
+
+    </script>
+</body>
+
+</html>

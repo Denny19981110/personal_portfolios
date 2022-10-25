@@ -1,0 +1,1 @@
+如果點開html檔沒有跑出資料，是因為Cors Error，請run live server
