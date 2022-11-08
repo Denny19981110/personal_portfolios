@@ -69,7 +69,7 @@
             z-index: 3;
         }
 
-        .watch-section{
+        .watch-section {
             background-image: url("https://www.apple.com/tw/home/heroes/watch-series-7/images/hero_watch_lte__b8er858e34gi_small_2x.jpg");
             background-size: 100%;
             background-position: 100%;
@@ -77,19 +77,22 @@
             background-repeat: no-repeat;
         }
 
-        .title a{
+        .title a {
             color: #000;
         }
-        .title h2{
+
+        .title h2 {
             font-size: 40px;
             font-weight: 600;
         }
-        .watch-section .title span{
+
+        .watch-section .title span {
             color: #f00;
             font-size: 25px;
             font-weight: 600;
             line-height: 2;
         }
+
         .logo {
             display: flex;
             justify-content: center;
@@ -98,44 +101,50 @@
         .logo a {
             font-size: 25px;
         }
-        .navbar .btn:hover{
+
+        .navbar .btn:hover {
             outline: none !important;
         }
-        .container{
-            max-width:960px;
+
+        .container {
+            max-width: 960px;
         }
-        .img-wrapper{
+
+        .img-wrapper {
             height: 400px;
-            max-height:400px;
-            
+            max-height: 400px;
+
         }
+
         .unit-airpods-img,
-        .unit-macbook-img{
+        .unit-macbook-img {
             background-image: url('https://www.apple.com/v/home/aq/images/promos/ipad-air/promo_ipadair_avail__ferd4bfpcdm6_medium.jpg');
             position: absolute;
             background-repeat: no-repeat;
             background-size: 100%;
             width: 100%;
             height: 400px;
-            max-height:400px;
+            max-height: 400px;
             top: 0;
             left: 0;
         }
-        .unit-title{
-            position:absolute;
+
+        .unit-title {
+            position: absolute;
             z-index: 4;
             color: #fff;
         }
-        .index-promote{
+
+        .index-promote {
             display: flex;
             justify-content: center;
         }
-        .unit-macbook-img{
+
+        .unit-macbook-img {
             background-image: url('https://www.apple.com/v/home/aq/images/promos/macbook-pro-13/promo_mbp13__buwssod6c8vm_medium.jpg');
         }
-        @media screen and (min-width:768px) {
 
-        }
+        @media screen and (min-width:768px) {}
 
         @media screen and (min-width:992px) {
 
@@ -143,14 +152,31 @@
                 display: unset;
                 justify-content: unset;
             }
+
             .logo a {
                 font-size: 16px;
             }
         }
     </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-55C598S');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55C598S" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <nav class="apple-nav navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container ">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
@@ -218,7 +244,7 @@
                     <a href="#">進一步了解 <i class="fa-solid fa-angle-right"></i></a>
                     <a href="#">&ensp;購買 <i class="fa-solid fa-angle-right"></i></a>
                 </div>
-    
+
             </div>
         </a>
     </section>
@@ -239,20 +265,20 @@
                     <figure class="unit-airpods-img"></figure>
                 </div>
             </div>
-                <div class="col-12 col-md-5 mx-2 position-relative index-promote">
-                    <a href="#" class="unit-link position-absolute w-100"></a>
-                    <div class="unit-title py-3 text-center">
-                        <h3>MacBook&nbsp;Pro&nbsp;13&nbsp;吋</h3>
-                        <h5>來自M2的超強驅動</h5>
-                        <div class="promote-link">
-                            <a href="#">進一步了解 <i class="fa-solid fa-angle-right"></i></a>
-                            <a href="#">&ensp;&ensp;購買 <i class="fa-solid fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="img-wrapper w-100">
-                        <figure class="unit-macbook-img"></figure>
+            <div class="col-12 col-md-5 mx-2 position-relative index-promote">
+                <a href="#" class="unit-link position-absolute w-100"></a>
+                <div class="unit-title py-3 text-center">
+                    <h3>MacBook&nbsp;Pro&nbsp;13&nbsp;吋</h3>
+                    <h5>來自M2的超強驅動</h5>
+                    <div class="promote-link">
+                        <a href="#">進一步了解 <i class="fa-solid fa-angle-right"></i></a>
+                        <a href="#">&ensp;&ensp;購買 <i class="fa-solid fa-angle-right"></i></a>
                     </div>
                 </div>
+                <div class="img-wrapper w-100">
+                    <figure class="unit-macbook-img"></figure>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -265,58 +291,58 @@
     <script>
         // 宣告
         const iphoneList = [
-                {
-                    name: 'iPhone 13',
-                    prodTitle:'購買 iPhone 13',
-                    price: 22900,
-                    baseImg: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone13-digitalmat-gallery-1-202203?wid=364&hei=333&fmt=png-alpha&.v=1645574660282',
-                    colorList: [
-                        { name: '綠色', color: '#4d5e4c', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1645036276543' },
-                        { name: '粉紅色', color: '#fae1dc', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-mini-pink-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1645572315655' },
-                        { name: '藍色', color: '#437792', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-mini-blue-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1645572315986' },
-                        { name: '星光色', color: '#fbf7f4', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-mini-starlight-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1645572315872' },
-                        { name: '午夜色', color: '#42474d', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-mini-midnight-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1645572315770' },
-                    ],
-                    spec: [
-                        {
-                            name: '儲存容量',
-                            specDetail: [
-                                { name: '128GB', fit: 0 },
-                                { name: '256GB', fit: 3500 },
-                                { name: '512GB', fit: 10500 }
-                            ]
-                        },
-                        {
-                            name:'機型',
-                            specDetail:[
-                                {name:'iPhone 13 mini', content:'5.4吋顯示器', fit:0},
-                                {name:'iPhone 13', content:'6.1吋顯示器', fit:3000},
-                            ]
-                        }
-                    ]
-                },
-                {
-                    name:'iPhone SE',
-                    productTitle:'購買 iPhone SE',
-                    price: 13900,
-                    baseImg:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-family-select-202203?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1646070494883',
-                    colorList:[
-                        { name: '午夜色', color: '#42474d', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-midnight-select-202203?wid=470&hei=556&fmt=png-alpha&.v=1646070494831' },
-                        { name: '星光色', color: '#fbf7f4', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-starlight-select-202203?wid=470&hei=556&fmt=png-alpha&.v=1646070494844' },
-                        { name: '(PRODUCT)RED', color:'#f00', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-red-select-202203?wid=470&hei=556&fmt=png-alpha&.v=1646070494834'}
-                    ],
-                    spec: [
-                        {
-                            name: '儲存容量',
-                            specDetail: [
-                                { name: '64GB', fit: 0 },
-                                { name: '128GB', fit: 1600 },
-                                { name: '256GB', fit: 5100 }
-                            ]
-                        },
-                    ]
-                }
-            ]
+            {
+                name: 'iPhone 13',
+                prodTitle: '購買 iPhone 13',
+                price: 22900,
+                baseImg: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone13-digitalmat-gallery-1-202203?wid=364&hei=333&fmt=png-alpha&.v=1645574660282',
+                colorList: [
+                    { name: '綠色', color: '#4d5e4c', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1645036276543' },
+                    { name: '粉紅色', color: '#fae1dc', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-mini-pink-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1645572315655' },
+                    { name: '藍色', color: '#437792', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-mini-blue-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1645572315986' },
+                    { name: '星光色', color: '#fbf7f4', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-mini-starlight-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1645572315872' },
+                    { name: '午夜色', color: '#42474d', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-mini-midnight-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1645572315770' },
+                ],
+                spec: [
+                    {
+                        name: '儲存容量',
+                        specDetail: [
+                            { name: '128GB', fit: 0 },
+                            { name: '256GB', fit: 3500 },
+                            { name: '512GB', fit: 10500 }
+                        ]
+                    },
+                    {
+                        name: '機型',
+                        specDetail: [
+                            { name: 'iPhone 13 mini', content: '5.4吋顯示器', fit: 0 },
+                            { name: 'iPhone 13', content: '6.1吋顯示器', fit: 3000 },
+                        ]
+                    }
+                ]
+            },
+            {
+                name: 'iPhone SE',
+                productTitle: '購買 iPhone SE',
+                price: 13900,
+                baseImg: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-family-select-202203?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1646070494883',
+                colorList: [
+                    { name: '午夜色', color: '#42474d', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-midnight-select-202203?wid=470&hei=556&fmt=png-alpha&.v=1646070494831' },
+                    { name: '星光色', color: '#fbf7f4', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-starlight-select-202203?wid=470&hei=556&fmt=png-alpha&.v=1646070494844' },
+                    { name: '(PRODUCT)RED', color: '#f00', img: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-red-select-202203?wid=470&hei=556&fmt=png-alpha&.v=1646070494834' }
+                ],
+                spec: [
+                    {
+                        name: '儲存容量',
+                        specDetail: [
+                            { name: '64GB', fit: 0 },
+                            { name: '128GB', fit: 1600 },
+                            { name: '256GB', fit: 5100 }
+                        ]
+                    },
+                ]
+            }
+        ]
 
     </script>
 
